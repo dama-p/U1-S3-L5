@@ -542,7 +542,9 @@ const removeList = () => {
 
 const addTrClass = () => {
   const allTrs = document.getElementsByTagName("tr");
-  allTrs.className = "test";
+  for (let i = 0; i < allTrs.length; i++) {
+    allTrs[i].classList.add("test");
+  }
 };
 
 addTrClass();
