@@ -366,7 +366,7 @@ const movies = [
 
 const deleteProp = (singleObj, property) => {
   for (let i = 0; i < movies.length; i++) {
-    delete movies[i][property]; // ciclare ogni oggetto per eliminarne la singola proprietà
+    delete movies[i][property];
   }
 };
 
@@ -382,11 +382,10 @@ const newestMovie = function (array) {
 
   if (Array.isArray(array)) {
     for (let i = 0; i < array.length; i++) {
-      const movie = array[i]; // selezione dell'elemento singolo dall'array
-      const currentYear = parseInt(movie.Year); // trasformazione della stringa in numero
+      const movie = array[i];
+      const currentYear = parseInt(movie.Year);
 
       if (currentYear > result.Year) {
-        // si entra nell'if solo per anni più regenti (maggiori) dell'elemento ciclato
         result = movie;
       }
     }
@@ -401,10 +400,10 @@ console.log(newestMovie(movies));
 */
 
 const countMovies = () => {
-  console.log(movies.length); // essendo la lenght in base 1, il numero di film sarà pari ad essa
-};
+  console.log(movies.length);
 
-countMovies();
+  countMovies();
+};
 
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
@@ -439,10 +438,8 @@ console.log(onlyInLastMillennium(movies));
 */
 
 const sumAllTheYears = (arr) => arr.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.Year), 0);
-// l'accumulatore è un valore numero, currentvalue no, per questo viene trasformato in un numero con parseInt
 
 console.log(sumAllTheYears(movies));
-// sumAllTheYears è sempre una funzione, quindi va richiamata
 
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
@@ -463,10 +460,12 @@ console.log(searchByTitle(movies, "Avengers: Endgame"));
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
 
-function removeIndex (num, movies) {
+function removeIndex(num, movies) {
   movies.splice(num, 1);
   return movies;
 }
+
+console.log(removeIndex(10, movies));
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
@@ -503,17 +502,50 @@ console.log(consoleCopy());
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
 
+const addRedBg = () => {
+  const links = document.querySelectorAll("a");
+  links.forEach((link) => {
+    link.style.backgroundColor = "red";
+  });
+};
+
+addRedBg();
+
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
+
+const addToList = () => {
+  const li = document.createElement("li");
+  li.innerText = "nuovo elemento lista";
+  const list = document.getElementById("myList");
+  list.appendChild(li);
+};
+
+addToList();
 
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+const removeList = () => {
+  const list = document.getElementById("myList");
+  list.remove();
+};
+
+// removeList();
+// commentata per non attivarla
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+const addTrClass = () => {
+  const allTrs = document.getElementsByTagName("tr");
+  allTrs.className = "test";
+};
+
+addTrClass();
 
 // [EXTRA] JS Avanzato
 
